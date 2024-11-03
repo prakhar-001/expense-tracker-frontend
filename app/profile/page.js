@@ -13,7 +13,7 @@ import CrossButton from '@/components/buttons/CrossButton.js';
 
 const page = () => {
   const {user, loading} = useSelector(state => state.userReducer)
-  // console.log(user)
+  console.log(user)
   // const userId = user?._id;
   const userId = "AkLEQPydK8S9JBXE1Twi7mHTWCl1";
 
@@ -103,7 +103,7 @@ const page = () => {
           <button onClick={() => setRefreshCategories(!refreshCategories)}><SlRefresh className="hover:text-3xl active:animate-ping"/></button>
         </div>
         <button onClick={toggleAdd} className="sm:hidden flex items-center gap-3 bg-blue-400 dark:bg-white dark:text-black p-1 px-3 rounded-xl text-base">Add <FaPlus /></button>
-        <div className="text-base flex justify-between gap-2 mx-0 w-auto sm:w-max sm:mx-0">
+        <div className="text-base flex justify-between gap-2 mx-0 w-auto sm:w-max sm:mx-0 py-1">
               <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)} className='rounded-xl px-2 border-2 border-blue-400 dark:border-slate-900'>
                 <option value="all" >All Categories</option>
                 <option value="Income">Incomes</option>
@@ -117,7 +117,10 @@ const page = () => {
         {/* USER DATA  */}
         <div className='flex flex-col items-center justify-start gap-5 border-2 w-full sm:w-1/4 bg-slate-200 dark:bg-gray-400 rounded-xl p-5 h-[20vh] sm:h-[78.15vh] '>
           <h1 className='text-xl font-bold'>Welcome! {user?.name}</h1>
-          <h2>Email: {user?.email}</h2>
+          <div className="flex flex-col justify-start">
+            <h2>Email: {user?.email}</h2>
+            <h2>Role: {user?.role}</h2>
+          </div>
         </div>
         {/* CATEGORIES FORM PC*/}
         <div className="flex-col items-center justify-start gap-5 border-2 w-full sm:w-1/4 bg-slate-200 dark:bg-gray-400 rounded-2xl p-2 sm:p-4 h-[41vh] sm:h-[78.15vh] mt-2 sm:m-0 hidden sm:flex">

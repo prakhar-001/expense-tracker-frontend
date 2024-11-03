@@ -81,9 +81,10 @@ const page = () => {
                 </Link>
                 {/* {
                     userValue? */}
-                    <Link href={"/"} className='flex items-center justify-center gap-2'>
+                    <div><button className='p-2 w-32 border-2 hover:shadow-green-300 rounded-xl shadow-xl'><Link href={"/"} className='flex items-center justify-center gap-2 font-semibold'><p>Track Now! </p></Link></button></div>
+                    {/* <Link href={"/"} className='flex items-center justify-center gap-2'>
                         <div className='p-2 px-5 w-32 border-2 hover:shadow-green-300 shadow-xl rounded-xl font-semibold'>Track Now!</div>
-                    </Link>
+                    </Link> */}
                     {/* :
                     <div><button className='p-2 w-32 border-2 hover:shadow-red-300 shadow-xl rounded-xl' ><Link href={"/"} className='flex items-center justify-center gap-2'><p>Track Now! </p></Link></button></div>
                 } */}

@@ -48,15 +48,15 @@ export default function Home() {
     amount: '',
     mode: '',
     user: userId,
-    description: '',
-    date: '',
+    description: '-',
+    date: "",
     category: ''
   });
   const [expenseData, setExpenseData] = useState({
     title: '',
     amount: '',
     user: userId,
-    description: '',
+    description: '-',
     date: '',
     category: ''
   });
@@ -439,13 +439,13 @@ const toggleExpenseForm = () => {
                 <textarea name="description" value={incomeData.description} onChange={handleChangeIncome}  className="rounded-md p-1"/>
               </div>
               <div className="my-1 flex w-full flex-col">
-                <label htmlFor="date">Date</label>
-                <input type="date" name="date" value={incomeData.date} onChange={handleChangeIncome} className="rounded-md p-1"/>
+                <label htmlFor="date">Datee</label>
+                <input type="date" name="date" value={incomeData.date} onChange={handleChangeIncome} className="rounded-md p-1 bg-white w-72"/>
               </div>
 
               <div className="my-1 flex w-full flex-col">
               <label htmlFor="category">Category</label>
-              <select name="category" value={incomeData.category} onChange={handleChangeIncome} className="rounded-md p-1">
+              <select name="category" value={incomeData.category} onChange={handleChangeIncome} className="rounded-md p-1 bg-white">
                 <option value="Other">Other</option>
                 <option value="Salary">Salary</option>
                 <option value="Loan">Loan</option>
@@ -502,12 +502,12 @@ const toggleExpenseForm = () => {
               </div>
               <div className="my-1 flex w-full flex-col">
                 <label htmlFor="date">Date</label>
-                <input type="date" name="date" value={expenseData.date} onChange={handleChangeExpense} className="rounded-md p-1"/>
+                <input type="date" name="date" value={expenseData.date} onChange={handleChangeExpense} className="rounded-md p-1 bg-white w-72"/>
               </div>
 
               <div className="my-1 flex w-full flex-col">
               <label htmlFor="category">Category</label>
-              <select name="category" value={expenseData.category} onChange={handleChangeExpense} className="rounded-md p-1">
+              <select name="category" value={expenseData.category} onChange={handleChangeExpense} className="rounded-md p-1 bg-white">
                 <option value="Other">Other</option>
                 <option value="Shopping">Shopping</option>
                 <option value="Gaming">Gaming</option>
@@ -548,7 +548,7 @@ const toggleExpenseForm = () => {
     <div className=" w-full sm:w-3/4 h-full flex flex-col gap-4 sm:gap-8">
 
       {/* Filters for Analysis */}
-      <div className="text-base flex justify-evenly sm:justify-end gap-5 mx-0 w-full sm:mx-0 mt-2 sm:mt-0 h-8">
+      <div className="text-base flex justify-evenly sm:justify-end gap-5 mx-0 w-full sm:mx-0 mt-2 sm:mt-0 py-1">
             <select value={selectedModeExpense} onChange={(e) => {setSelectedModeExpense(e.target.value), setSelectedModeIncome(e.target.value)}} className='rounded-xl px-2 border-2 border-blue-400 bg-white dark:border-slate-900'>
                 <option value="all">All Mode</option>
                 <option value="Cash">Cash</option>

@@ -72,7 +72,7 @@ const logoutHandler = async () => {
 
     {
       user? 
-      <div className='flex flex-row w-4/5 justify-between items-center'>
+      <div className='flex flex-row w-full justify-between items-center'>
         <Link href={"/"} onClick={() => {setIsOpen(false)}}>
           <div className="flex items-center gap-3">
             <div className="hidden sm:block">Dashboard</div>
@@ -93,24 +93,23 @@ const logoutHandler = async () => {
           </div>
         </Link>
 
-        <Link href={"/transactions"} onClick={() => {setIsOpen(false)}}>
+        {/* <Link href={"/transactions"} onClick={() => {setIsOpen(false)}}>
           <div className="flex items-center gap-3">
             <div className="hidden sm:block">Transactions</div>
             <div className="text-2xl sm:text-lg"><FaMoneyBillTransfer /></div>
           </div>
-        </Link>
-      </div>
-      :
-      <div></div>
-    }
-      
+        </Link> */}
 
-      {
+          {
           user&& ( 
-          
             <div className='flex items-center gap-2'>
               {/* <p className='hidden sm:flex'>Profile</p> */}
-              <button onClick={() => {setIsOpen((prev) => !prev)}} className='ml-2 sm:text-base text-xl'><FaUser/></button>
+              <button onClick={() => {setIsOpen((prev) => !prev)}} className='ml-2 sm:text-base text-xl'>
+                <div className="flex items-center gap-3">
+                  <div className="hidden sm:block">{user.name}</div>
+                  <div className="text-xl sm:text-base border-2 border-black p-1 rounded-full"><FaUser/></div>
+                </div>
+              </button>
               <dialog open={isOpen} className=' absolute top-10 mt-2 mr-5 p-3 w-40 h-36 sm:h-36 border-4 rounded-lg border-slate-300 dark:bg-slate-800 dark:text-white'>
                  <div className='flex flex-col justify-between h-full w-full'> 
                     <Link onClick={() => {setIsOpen(false)}} href={'/profile'} className='flex gap-5 items-center justify-between'>
@@ -130,7 +129,15 @@ const logoutHandler = async () => {
                  </div>
                 </dialog>
             </div>
-      )}     
+          )}   
+
+      </div>
+      :
+      <div></div>
+    }
+      
+
+        
 
       {
         !user && (

@@ -158,7 +158,7 @@ const type = "Expense"
           <h1 className='dark:text-white'>Total Expense : {totalExpense}</h1>
           <button onClick={toggleExpenseForm} className="sm:hidden flex items-center gap-3 bg-red-400 dark:bg-white p-1 px-3 rounded-xl text-sm dark:text-black">Add <FaPlus /></button>
         </div>
-        <div className="text-base flex justify-between gap-2 mx-0 w-full sm:w-max sm:mx-0 mt-2 sm:mt-0">
+        <div className="text-base flex justify-between gap-2 mx-0 w-full sm:w-max sm:mx-0 mt-2 sm:mt-0 py-1">
             <select value={selectedMode} onChange={(e) => setSelectedMode(e.target.value)} className='rounded-xl px-2 border-2 border-blue-400 bg-white dark:border-slate-900'>
                 <option value="all">All Mode</option>
                 <option value="Cash">Cash</option>
@@ -188,8 +188,11 @@ const type = "Expense"
                  <option key={year} value={year}>{year}</option>
                 ))}
             </select>
-            
-            <button onClick={() => setDetails(!details)} className="sm:hidden flex items-center gap-3 bg-blue-400 dark:bg-white p-1 px-3 rounded-xl"><FcViewDetails className="text-xl "/></button>
+            {
+              expensesData.length? (
+                <button onClick={() => setDetails(!details)} className="sm:hidden flex items-center gap-3 bg-blue-400 dark:bg-white p-1 px-3 rounded-xl"><FcViewDetails className="text-xl "/></button>
+              ):<div className='hidden'>Detail</div>
+            }
         </div>
       </div>
                 
@@ -275,12 +278,12 @@ const type = "Expense"
               </div>
               <div className="my-1 flex w-full flex-col">
                 <label htmlFor="date">Date</label>
-                <input type="date" name="date" value={expenseData.date} onChange={handleChangeExpense} className="rounded-md p-1"/>
+                <input type="date" name="date" value={expenseData.date} onChange={handleChangeExpense} className="rounded-md p-1 bg-white w-72"/>
               </div>
 
               <div className="my-1 flex w-full flex-col">
                 <label htmlFor="category">Category</label>
-                <select name="category" value={expenseData.category} onChange={handleChangeExpense} className="rounded-md p-1">
+                <select name="category" value={expenseData.category} onChange={handleChangeExpense} className="rounded-md p-1 bg-white">
                   <option value="Other">Other</option>
                   <option value="Shopping">Shopping</option>
                   <option value="Gaming">Gaming</option>
