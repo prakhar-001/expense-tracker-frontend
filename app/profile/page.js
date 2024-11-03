@@ -14,8 +14,7 @@ import CrossButton from '@/components/buttons/CrossButton.js';
 const page = () => {
   const {user, loading} = useSelector(state => state.userReducer)
   console.log(user)
-  // const userId = user?._id;
-  const userId = "AkLEQPydK8S9JBXE1Twi7mHTWCl1";
+  const userId = user?._id;
 
   const [categroriesData, setCategoriesData] = useState([])
   const [categoryData, setCategoryData] = useState({
@@ -140,7 +139,12 @@ const page = () => {
                     <option value="Expense">Expense</option>
                   </select>
                 </div>
-                <button type="submit" className='p-2 w-40 mx-auto rounded-xl bg-blue-300 dark:bg-slate-800 dark:text-white font-semibold mt-8'>Submit</button>
+                {
+                  categoryData.type === 'Select' ? 
+                  <div className='p-2 w-40 rounded-xl bg-blue-300 dark:bg-slate-800 dark:text-white font-semibold mt-8 flex items-center justify-center hover:cursor-pointer' onClick={() => toast.error("Select Type Of Category")}>Submit</div>
+                  :
+                  <button type="submit" className='p-2 w-40 mx-auto rounded-xl bg-blue-300 dark:bg-slate-800 dark:text-white font-semibold mt-8'>Submit</button>
+                }
           </form>
           </div>
         </div>
@@ -168,7 +172,12 @@ const page = () => {
                     <option value="Expense">Expense</option>
                   </select>
                 </div>
-                <button type="submit" className='p-2 w-40 mx-auto rounded-xl bg-blue-300 dark:bg-slate-800 dark:text-white font-semibold mt-8'>Submit</button>
+                {
+                  categoryData.type === 'Select' ? 
+                  <div className='p-2 w-40 rounded-xl bg-blue-300 dark:bg-slate-800 dark:text-white font-semibold mt-8 flex items-center justify-center hover:cursor-pointer' onClick={() => toast.error("Select Type Of Category")}>Submit</div>
+                  :
+                  <button type="submit" className='p-2 w-40 mx-auto rounded-xl bg-blue-300 dark:bg-slate-800 dark:text-white font-semibold mt-8'>Submit</button>
+                }
           </form>
           </div>
         </div>
@@ -176,25 +185,25 @@ const page = () => {
       }
 
         {/* CATEGORIES TABLE */}
-        <div className="w-full sm:w-2/6 sm:pl-5 h-full flex">
-          <table className="table-auto w-full border-2 h-full bg-slate-200 dark:bg-gray-400 p-10 overflow-x-scroll mt-2 sm:m-0">
-            <thead className="w-full ">
-              <tr className="">
-                <th className="px-4 py-2 w-2/12">Title</th>
-                <th className="px-4 py-2 w-1/12">Type</th>
-                <th className="px-4 py-2 w-1/12">Edit</th>
-                <th className="px-4 py-2 w-1/12">Delete</th>
+        <div className="w-full sm:w-2/6 h-full flex mt-2 sm:m-0">
+          <table className="table-auto w-full border-2 h-full bg-slate-200 dark:bg-gray-400 p-2 sm:p-10 flex flex-col justify-start rounded-2xl">
+            <thead className="w-full border">
+              <tr className="flex w-full">
+                <th className=" py-2 w-4/12">Title</th>
+                <th className=" py-2 w-3/12">Type</th>
+                <th className=" py-2 w-2/12">Edit</th>
+                <th className=" py-2 w-3/12">Delete</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className='flex flex-col w-full'>
               {categroriesData.map((i) => (
-                <tr key={i._id} className="h-[7vh]">
-                  <td className="border px-4 py-2 w-2/12">{i.title}</td>
-                  <td className="border px-4 py-2 w-1/12 ">
+                <tr key={i._id} className="h-[7vh] flex w-full">
+                  <td className="border py-2 w-4/12">{i.title}</td>
+                  <td className="border py-2 w-3/12 ">
                     <div className="flex justify-center">{i.type}</div>
                   </td>                  
-                  <td className="border px-4 py-2 w-1/12"><div className="flex justify-center">Edit</div></td>
-                  <td className="border px-6 py-2 w-1/12"><button onClick={() => deleteHandler(i._id)}><div className="ml-4 text-xl"><MdDelete className="hover:text-red-600 hover:text-2xl"/></div></button></td>
+                  <td className="border px-4 py-2 w-2/12"><div className="flex justify-center">Edit</div></td>
+                  <td className="border py-2 w-3/12 flex items-center justify-center"><button onClick={() => deleteHandler(i._id)}><div className="text-xl w-full"><MdDelete className="hover:text-red-600 hover:text-2xl w-6"/></div></button></td>
                 </tr>
               ))}
             </tbody>

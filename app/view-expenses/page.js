@@ -38,7 +38,7 @@ const Page = () => {
   amount: '',
   mode: '',
   user: userId,
-  description: '.',
+  description: '---',
   date: '',
   category: ''
 });
@@ -96,7 +96,7 @@ const type = "Expense"
       // console.log(data.expenses)
       setCategoriesData(data.categories);
     } catch (error) {
-      console.error('Error fetching expenses:', error);
+      console.error('Error fetching expenses', error);
   }
 }
   // console.log(categoriesData)
@@ -141,7 +141,8 @@ const type = "Expense"
   };
 
   const toggleExpenseForm = () => {
-    setAddOpen(!addOpen)  }
+    setAddOpen(!addOpen) 
+  }
 
  return (
   <UserLayout>
@@ -363,7 +364,7 @@ const type = "Expense"
                   </td>
                   <td className="border px-4 py-2 w-3/12">{expense.description}</td>
                   <td className="border px-4 py-2 w-1/12"><div className="flex justify-center">Edit</div></td>
-                  <td className="border px-4 py-2 w-1/12"><button onClick={() => deleteHandler(expense._id)}><div className="ml-4 text-xl"><MdDelete className="hover:text-red-600 hover:text-2xl"/></div></button></td>
+                  <td className="border px-4 py-2 w-1/12"><button onClick={() => deleteHandler(expense._id)}><div className="ml-4 text-xl flex items-center justify-center w-full"><MdDelete className="hover:text-red-600 hover:text-2xl w-6"/></div></button></td>
                   {/* Add more data cells as needed */}
                 </tr>
               ))}

@@ -35,7 +35,7 @@ const Page = () => {
   amount: '',
   mode: '',
   user: userId,
-  description: '.',
+  description: '---',
   date: '',
   category: ''
 });
@@ -340,16 +340,17 @@ const toggleIncomeForm = () => {
                 )
               }
               {incomesData.map((income) => (
-                <tr key={income._id}>
-                  {/* <td className="border px-4 py-2">{income._id}</td> */}
+                <tr key={income._id} className="h-[7vh]">
                   <td className="border px-4 py-2">{income.title}</td>
-                  <td className="border px-4 py-2"><div className="flex justify-center">{income.amount}</div></td>
+                  <td className="border px-4 py-2">
+                    <div className="flex justify-center">{income.amount}</div>
+                  </td>
                   <td className="border px-4 py-2">{income.category}</td>
                   <td className="border px-4 py-2 w-1/12">{income.mode}</td>
                   <td className="border px-4 py-2"><div className="flex justify-center">{new Date(income.date).toLocaleDateString()}</div></td>
                   <td className="border px-4 py-2">{income.description}</td>
                   <td className="border px-4 py-2"><div className="flex justify-center">Edit</div></td>
-                  <td className="border px-4 py-2"><button onClick={() => deleteHandler(income._id)}><div className="ml-4 text-xl"><MdDelete className="hover:text-red-500" /></div></button></td>
+                  <td className="border px-4 py-2"><button onClick={() => deleteHandler(income._id)}><div className="ml-4 text-xl flex items-center justify-center w-full"><MdDelete className="hover:text-red-500 hover:text-2xl w-6"/></div></button></td>
                   {/* Add more data cells as needed */}
                 </tr>
               ))}
