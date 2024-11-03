@@ -11,6 +11,8 @@ import { FaPlus } from "react-icons/fa";
 import { FcViewDetails } from "react-icons/fc";
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
+import CrossButton from '@/components/buttons/CrossButton.js';
+
 
 const Page = () => {
 
@@ -138,6 +140,9 @@ const type = "Expense"
     }
   };
 
+  const toggleExpenseForm = () => {
+    setAddOpen(!addOpen)  }
+
  return (
   <UserLayout>
     <LoggedInUserComponent>
@@ -151,7 +156,7 @@ const type = "Expense"
             <button onClick={() => setRefreshExpenses(!refreshExpenses)}><SlRefresh className="sm:hover:text-3xl active:animate-spin"/></button>
           </div>
           <h1 className='dark:text-white'>Total Expense : {totalExpense}</h1>
-          <button onClick={() => setAddOpen(!addOpen)} className="sm:hidden flex items-center gap-3 bg-red-400 dark:bg-white p-1 px-3 rounded-xl text-sm dark:text-black">Add <FaPlus /></button>
+          <button onClick={toggleExpenseForm} className="sm:hidden flex items-center gap-3 bg-red-400 dark:bg-white p-1 px-3 rounded-xl text-sm dark:text-black">Add <FaPlus /></button>
         </div>
         <div className="text-base flex justify-between gap-2 mx-0 w-full sm:w-max sm:mx-0 mt-2 sm:mt-0">
             <select value={selectedMode} onChange={(e) => setSelectedMode(e.target.value)} className='rounded-xl px-2 border-2 border-blue-400 bg-white dark:border-slate-900'>
@@ -251,7 +256,10 @@ const type = "Expense"
         {
           addOpen && (
             <div className="flex sm:hidden flex-col items-center border-2 w-full sm:w-1/3 h-max bg-slate-200 dark:bg-gray-400 rounded-xl p-5">
-            <h1 className="font-semibold">Add Expense</h1>
+            <div className="flex flex-row justify-between items-center w-full pl-5">
+              <h1 className="font-semibold">Add Expense</h1>
+              <CrossButton functionToExecute={toggleExpenseForm}/>
+            </div> 
             <form onSubmit={handleSubmitExpense} className="flex flex-col w-full px-5">
               <div className="my-1 flex w-full flex-col">
                 <label htmlFor="title">Title</label>

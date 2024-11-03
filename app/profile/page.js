@@ -8,6 +8,8 @@ import toast from 'react-hot-toast';
 import { SlRefresh } from "react-icons/sl";
 import { MdDelete } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
+import CrossButton from '@/components/buttons/CrossButton.js';
+
 
 const page = () => {
   const {user, loading} = useSelector(state => state.userReducer)
@@ -85,6 +87,11 @@ const page = () => {
       //  console.log(error.response.data.message)
     }
    };
+
+  const toggleAdd = () => {
+    setAddCategoryOpen(!addCategoryOpen)
+  }
+
   return (
     <UserLayout>
     <LoggedInUserComponent>
@@ -95,7 +102,7 @@ const page = () => {
           <h1>Your Profile</h1>
           <button onClick={() => setRefreshCategories(!refreshCategories)}><SlRefresh className="hover:text-3xl active:animate-ping"/></button>
         </div>
-        <button onClick={() => setAddCategoryOpen(!addCategoryOpen)} className="sm:hidden flex items-center gap-3 bg-blue-400 dark:bg-white dark:text-black p-1 px-3 rounded-xl text-base">Add <FaPlus /></button>
+        <button onClick={toggleAdd} className="sm:hidden flex items-center gap-3 bg-blue-400 dark:bg-white dark:text-black p-1 px-3 rounded-xl text-base">Add <FaPlus /></button>
         <div className="text-base flex justify-between gap-2 mx-0 w-auto sm:w-max sm:mx-0">
               <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)} className='rounded-xl px-2 border-2 border-blue-400 dark:border-slate-900'>
                 <option value="all" >All Categories</option>
@@ -139,7 +146,10 @@ const page = () => {
         {
           addCategoryOpen && (
         <div className="flex sm:hidden flex-col items-center justify-start gap-5 border-2 w-full sm:w-1/4 bg-slate-200 dark:bg-gray-400 rounded-2xl p-2 sm:p-4 h-[41vh] sm:h-[78.15vh] mt-2 sm:m-0 ">
-          <h1 className='text-lg font-bold'> Add Custom Category</h1>
+          <div className="flex flex-row justify-between items-center w-full pl-5">
+              <h1 className="font-semibold">Add Custom Category</h1>
+              <CrossButton functionToExecute={toggleAdd}/>
+          </div> 
           <div className="bg-gray-300 p-5 w-full rounded-xl">
           <form onSubmit={handleSubmit} className='w-full flex flex-col items-center'>
                 {/* <h1 className=''>Add Category</h1> */}
@@ -155,7 +165,7 @@ const page = () => {
                     <option value="Expense">Expense</option>
                   </select>
                 </div>
-                <button type="submit" className='p-2 w-40 mx-auto rounded-xl bg-green-300 dark:bg-slate-800 dark:text-white font-semibold mt-8'>Submit</button>
+                <button type="submit" className='p-2 w-40 mx-auto rounded-xl bg-blue-300 dark:bg-slate-800 dark:text-white font-semibold mt-8'>Submit</button>
           </form>
           </div>
         </div>
