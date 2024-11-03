@@ -19,6 +19,7 @@ import CrossButton from '@/components/buttons/CrossButton.js';
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip)
 ChartJS.register(ArcElement, Tooltip, Legend)
 
+// Commit
 
 
 export default function Home() {
